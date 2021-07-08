@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Injuries</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+  </head>
+  <body>
+    <h1 class="topic">Sports people and their injuries</h1>
+    <hr>
+    <br>
+<!-- for loop starts -->
+    {% for r in result %}
+    <div class="" style ="color:#558776;background-color:#DDDDDD">
+      <h1> {{ r.playername }}</h1>
+    </div>
+    <div class="" style ="color:#fff;font-size:28px;background-color:green">
+      <p> {{ r.injury}}</p>
+    </div>
+    {% endfor %}
+
+
+    <button class="myButton" onclick="openForm()">add new</button>
+    <div class="form-popup" id="myForm">
+  <form action="/process" method="post" class="form-container">
+    <h1>Player Injury</h1>
+
+    <label for="playername"><b>Player Name</b></label>
+    <input type="text" placeholder="Enter Player name" name="playername" required>
+
+    <label for="injury"><b>Injury</b></label>
+    <input type="text" placeholder="Enter the injury" name="injury" required>
+
+    <button type="submit" class="btn">submit</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
+  </form>
+</div>
+
+
+    <script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+  </body>
+</html>
